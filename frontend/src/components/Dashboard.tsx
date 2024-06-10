@@ -12,7 +12,6 @@ interface DashboardProps {
 */
 function Dashboard({}: DashboardProps) {
 
-  // @ts-expect-error: These variables are currently unused. You will have to either use them or remove them (at which point you should remove this comment)
   const [partners, setPartners] = useState<PartnerData>({});
 
   // Load all partners on initial page load 
@@ -21,12 +20,20 @@ function Dashboard({}: DashboardProps) {
       method: 'GET',
     })
     .then((res) => res.json())
+    .then((data: PartnerData) => {
+      setPartners(data);
+    })
+    .catch((error) => {
+      console.error('Error getting partners:', error);
+    });
   }, [])
 
   return (
     <div id="main-content">
       <div id="main-partners-grid">
-        <PartnerTile partnerData={{}} />
+        {Object.entries(partners).map(([key, partner]) => (
+          <PartnerTile key={key} partnerDetails={partner} />
+        ))}
       </div>
     </div>
   )
