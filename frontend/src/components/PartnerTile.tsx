@@ -10,7 +10,7 @@ interface PartnerTileProps {
 }
 
 function PartnerTile({ partnerDetails }: PartnerTileProps) {
-  const { thumbnailUrl, name, description } = partnerDetails;
+  const { thumbnailUrl, name, description, active } = partnerDetails;
 
   return (
     <div className="partner-tile">
@@ -18,6 +18,7 @@ function PartnerTile({ partnerDetails }: PartnerTileProps) {
       <hr />
       <div className="partner-info">
         <h3>{name}</h3>
+        <p>{active ? "Active" : "Inactive"}</p>
         <p>{description}</p>
       </div>
     </div>
