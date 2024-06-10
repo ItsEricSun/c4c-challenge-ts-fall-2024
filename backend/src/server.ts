@@ -39,6 +39,30 @@ app.get('/', (_req, res) => {
   res.status(200).send(partners);
 })
 
+
+/*
+Add a new partner, request body should be in the format:
+"id": string,
+"thumbnailUrl": string,
+"name": string,
+"description": string,
+"active": boolean
+*/
+app.post('/', (req, res) => {
+  // TODO: add type checking for request body
+  const newPartner = req.body;
+  // check if id already exists
+  if (partners[newPartner.id]) {
+    res.status(400).send("Partner with that ID already exists");
+  } else {
+    // remove id from body and add to partners
+    const id = newPartner.id;
+    delete newPartner.id;
+    partners[id] = newPartner;
+    res.status(201).send(newPartner);
+  }
+})
+
 // Start the backend
 app.listen(port, () => {
   console.log(`Express server starting on port ${port}!`);

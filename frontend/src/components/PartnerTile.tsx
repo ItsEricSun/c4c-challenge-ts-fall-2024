@@ -14,7 +14,9 @@ function PartnerTile({ partnerDetails }: PartnerTileProps) {
 
   return (
     <div className="partner-tile">
-      <img className="partner-thumbnail" src={thumbnailUrl} alt={name}/>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img className="partner-thumbnail" src={thumbnailUrl} alt={name}/>
+      </div>
       <hr />
       <div className="partner-info">
         <h3>{name}</h3>

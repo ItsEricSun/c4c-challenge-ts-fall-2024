@@ -14,6 +14,7 @@
 
 #main-partners-grid {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -32,12 +33,12 @@ h1.title {
 
 .partner-tile {
   width: 450px;
-  height: 400px;
+  /* height: 400px; */
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
 
   border: 1px solid #3d3d3d;
   border-radius: 12px;
