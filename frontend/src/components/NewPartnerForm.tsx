@@ -44,45 +44,53 @@ function NewPartnerForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Add a New Partner</h2>
-            <p>Partner Name:</p>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Partner name"
-                required
-            />
-            <p>Partner ID:</p>
-            <input
-                type="text"
-                id="id"
-                name="id"
-                placeholder="Partner ID"
-                required
-            />
-            <p>Partner Description:</p>
-            <textarea
-                id="description"
-                name="description"
-                placeholder="Partner description"
-                required
-            ></textarea>
-            <p>Partner Thumbnail URL:</p>
-            <input
-                type="text"
-                id="thumbnailUrl"
-                name="thumbnailUrl"
-                placeholder="Thumbnail URL"
-                required
-            />
-            <p>Active: </p>
-            <input type="checkbox" id="active" name="active" value="true" />
-            <br />
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-            <input type="submit" value="Submit" />
-        </form>
+        <div className="form-container">
+            <form onSubmit={handleSubmit}>
+                <h2>Add a New Partner</h2>
+                <p>Partner Name:</p>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Partner name"
+                    required
+                />
+                <p>Partner ID:</p>
+                <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    placeholder="Partner ID"
+                    required
+                />
+                <p>Partner Description:</p>
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Partner description"
+                    required
+                ></textarea>
+                <p>Partner Thumbnail URL:</p>
+                <input
+                    type="text"
+                    id="thumbnailUrl"
+                    name="thumbnailUrl"
+                    placeholder="Thumbnail URL"
+                    required
+                />
+                <p>
+                    Active:
+                    <input
+                        type="checkbox"
+                        id="active"
+                        name="active"
+                        value="true"
+                    />
+                </p>
+                {errorMessage ? <p style={{ color: "red" }}>{errorMessage}</p> : <p>&nbsp;</p>}
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     );
 }
 
