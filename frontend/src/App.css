@@ -33,7 +33,6 @@ h1.title {
 
 .partner-tile {
   width: 450px;
-  /* height: 400px; */
 
   display: flex;
   flex-direction: column;

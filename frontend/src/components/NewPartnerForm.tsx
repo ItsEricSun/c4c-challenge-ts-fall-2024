@@ -5,9 +5,11 @@ type NewPartnerFormProps = {
 };
 
 function NewPartnerForm({ onAddPartner }: NewPartnerFormProps) {
+    // A message that is shown after the form is submitted
     const [message, setMessage] = useState<string | null>(null);
     const [messageColor, setMessageColor] = useState<string>("green");
 
+    // Handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.target as HTMLFormElement;
         event.preventDefault();

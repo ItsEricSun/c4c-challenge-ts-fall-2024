@@ -14,8 +14,10 @@ interface PartnerTileProps {
 
 function PartnerTile({ partnerId, partnerDetails, onDeletePartner }: PartnerTileProps) {
     const { thumbnailUrl, name, description, active } = partnerDetails;
+    // A flag to show the confirmation dialog when deleting a partner
     const [showConfirmation, setShowConfirmation] = useState(false);
 
+    // Handle the deletion of a partner
     const handleClick = () => {
         console.log({ partnerId });
         fetch(`http://localhost:4000/${partnerId}`, {

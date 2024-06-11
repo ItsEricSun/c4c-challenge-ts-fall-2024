@@ -3,15 +3,15 @@ import PartnerTile from "./PartnerTile";
 import NewPartnerForm from "./NewPartnerForm";
 import { PartnerData } from "../types";
 
-interface DashboardProps {}
 
 /*
   The top-level component containing everything relevant to the dashboard,
   including information on each partner
 */
-function Dashboard({}: DashboardProps) {
+function Dashboard() {
     const [partners, setPartners] = useState<PartnerData>({});
 
+    // Fetch all partners from the server
     const fetchPartners = () => {
         fetch("http://localhost:4000", {
             method: "GET",
@@ -25,6 +25,7 @@ function Dashboard({}: DashboardProps) {
             });
     };
 
+    // Update the list of partners when a new one is added or an existing one is deleted
     const handleUpdatePartner = () => {
         fetchPartners();
     };
