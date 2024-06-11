@@ -68,6 +68,7 @@ function NewPartnerForm() {
                     id="description"
                     name="description"
                     placeholder="Partner description"
+                    style={{ maxWidth: "100%" }}
                     required
                 ></textarea>
                 <p>Partner Thumbnail URL:</p>
