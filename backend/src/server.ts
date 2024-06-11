@@ -53,13 +53,26 @@ app.post('/', (req, res) => {
   const newPartner = req.body;
   // check if id already exists
   if (partners[newPartner.id]) {
-    res.status(400).json({ error: 'Partner with that id already exists' });
+    res.status(400).json({ error: 'Partner with that ID already exists' });
   } else {
     // remove id from body and add to partners
     const id = newPartner.id;
     delete newPartner.id;
     partners[id] = newPartner;
     res.status(201).json({ message: 'Partner added successfully' });
+  }
+})
+
+/*
+Delete an existing partner by id
+*/
+app.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  if (partners[id]) {
+    delete partners[id];
+    res.status(200).json({ message: 'Partner deleted successfully' });
+  } else {
+    res.status(404).json({ error: 'Partner with that ID does not exist' });
   }
 })
 
