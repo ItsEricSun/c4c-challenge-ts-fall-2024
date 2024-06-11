@@ -44,7 +44,7 @@ function PartnerTile({ partnerId, partnerDetails, onDeletePartner }: PartnerTile
             <hr />
             <div className="partner-info">
                 <h3>{name}</h3>
-                <p>{active ? "Active" : "Inactive"}</p>
+                {active ? (<p style={{color: "Green"}}>Active</p>) : (<p style={{color: "Red"}}>Inactive</p>)}
                 <p>{description}</p>
             </div>
             {!showConfirmation && (
