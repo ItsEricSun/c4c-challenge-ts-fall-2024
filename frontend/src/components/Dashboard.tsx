@@ -25,7 +25,7 @@ function Dashboard({}: DashboardProps) {
             });
     };
 
-    const handleAddPartner = () => {
+    const handleUpdatePartner = () => {
         fetchPartners();
     };
 
@@ -37,9 +37,9 @@ function Dashboard({}: DashboardProps) {
     return (
         <div id="main-content">
             <div id="main-partners-grid">
-                <NewPartnerForm onAddPartner={handleAddPartner} />
+                <NewPartnerForm onAddPartner={handleUpdatePartner} />
                 {Object.entries(partners).map(([key, partner]) => (
-                    <PartnerTile partnerId={key} partnerDetails={partner} />
+                    <PartnerTile partnerId={key} partnerDetails={partner} onDeletePartner={handleUpdatePartner}/>
                 ))}
             </div>
         </div>

@@ -9,9 +9,10 @@ import { useState } from "react";
 interface PartnerTileProps {
     partnerId: string;
     partnerDetails: PartnerDetails;
+    onDeletePartner: () => void;
 }
 
-function PartnerTile({ partnerId, partnerDetails }: PartnerTileProps) {
+function PartnerTile({ partnerId, partnerDetails, onDeletePartner }: PartnerTileProps) {
     const { thumbnailUrl, name, description, active } = partnerDetails;
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -23,7 +24,8 @@ function PartnerTile({ partnerId, partnerDetails }: PartnerTileProps) {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                window.location.reload();
+                setShowConfirmation(false);
+                onDeletePartner();
             })
             .catch((error) => {
                 console.error("Error deleting partner:", error);
