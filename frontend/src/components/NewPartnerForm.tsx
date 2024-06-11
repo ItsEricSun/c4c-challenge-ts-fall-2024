@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-function NewPartnerForm() {
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+type NewPartnerFormProps = {
+    onAddPartner: () => void;
+};
+
+function NewPartnerForm({ onAddPartner }: NewPartnerFormProps) {
+    const [message, setMessage] = useState<string | null>(null);
+    const [messageColor, setMessageColor] = useState<string>("green");
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.target as HTMLFormElement;
@@ -35,17 +40,21 @@ function NewPartnerForm() {
             })
             .then((data) => {
                 console.log("Success:", data);
-                window.location.reload();
+                setMessage("Partner added successfully");
+                setMessageColor("green");
+                (document.getElementById("newPartnerForm") as HTMLFormElement)?.reset();
+                onAddPartner();
             })
             .catch((error) => {
                 console.error("Error:", error);
-                setErrorMessage(error.message);
+                setMessage(error.message);
+                setMessageColor("red");
             });
     };
 
     return (
         <div className="form-container">
-            <form onSubmit={handleSubmit}>
+            <form id="newPartnerForm" onSubmit={handleSubmit}>
                 <h2>Add a New Partner</h2>
                 <p>Partner Name:</p>
                 <input
@@ -88,7 +97,11 @@ function NewPartnerForm() {
                         value="true"
                     />
                 </p>
-                {errorMessage ? <p style={{ color: "red" }}>{errorMessage}</p> : <p>&nbsp;</p>}
+                {message ? (
+                    <p style={{ color: messageColor }}>{message}</p>
+                ) : (
+                    <p>&nbsp;</p>
+                )}
                 <input type="submit" value="Submit" />
             </form>
         </div>

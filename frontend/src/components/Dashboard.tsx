@@ -12,8 +12,7 @@ interface DashboardProps {}
 function Dashboard({}: DashboardProps) {
     const [partners, setPartners] = useState<PartnerData>({});
 
-    // Load all partners on initial page load
-    useEffect(() => {
+    const fetchPartners = () => {
         fetch("http://localhost:4000", {
             method: "GET",
         })
@@ -24,12 +23,21 @@ function Dashboard({}: DashboardProps) {
             .catch((error) => {
                 console.error("Error getting partners:", error);
             });
+    };
+
+    const handleAddPartner = () => {
+        fetchPartners();
+    };
+
+    // Load all partners on initial page load
+    useEffect(() => {
+        fetchPartners();
     }, []);
 
     return (
         <div id="main-content">
             <div id="main-partners-grid">
-                <NewPartnerForm />
+                <NewPartnerForm onAddPartner={handleAddPartner} />
                 {Object.entries(partners).map(([key, partner]) => (
                     <PartnerTile partnerId={key} partnerDetails={partner} />
                 ))}
