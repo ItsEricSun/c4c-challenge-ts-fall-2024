@@ -53,13 +53,13 @@ app.post('/', (req, res) => {
   const newPartner = req.body;
   // check if id already exists
   if (partners[newPartner.id]) {
-    res.status(400).send("Partner with that ID already exists");
+    res.status(400).json({ error: 'Partner with that id already exists' });
   } else {
     // remove id from body and add to partners
     const id = newPartner.id;
     delete newPartner.id;
     partners[id] = newPartner;
-    res.status(201).send(newPartner);
+    res.status(201).json({ message: 'Partner added successfully' });
   }
 })
 

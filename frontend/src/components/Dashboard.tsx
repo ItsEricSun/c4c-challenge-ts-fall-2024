@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PartnerTile from './PartnerTile';
+import NewPartnerForm from './NewPartnerForm';
 import { PartnerData } from '../types';
 
 interface DashboardProps {
@@ -31,6 +32,7 @@ function Dashboard({}: DashboardProps) {
   return (
     <div id="main-content">
       <div id="main-partners-grid">
+        <NewPartnerForm />
         {Object.entries(partners).map(([key, partner]) => (
           <PartnerTile key={key} partnerDetails={partner} />
         ))}
