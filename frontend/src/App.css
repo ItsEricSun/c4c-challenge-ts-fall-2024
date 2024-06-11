@@ -54,3 +54,19 @@ h1.title {
 .partner-info {
   font-size: 0.9em;
 }
+
+.delete-button {
+  background-color: #ff0000;
+  color: white;
+  border: 1px solid #ff0000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: white;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  transition: 0.2s;
+}
